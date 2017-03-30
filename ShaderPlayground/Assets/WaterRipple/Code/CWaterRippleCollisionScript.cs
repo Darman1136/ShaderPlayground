@@ -9,7 +9,6 @@ public class CWaterRippleCollisionScript : MonoBehaviour {
     private readonly string S_DRAW_DISTANCE = "_DrawDistance";
 
     private Renderer r;
-    private Mesh mesh;
 
     private float[] faWaveAmplitude = new float[8];
     private float[] faDrawDistance = new float[8];
@@ -22,8 +21,6 @@ public class CWaterRippleCollisionScript : MonoBehaviour {
 
     void Start() {
         r = GetComponent<Renderer>();
-        mesh = GetComponent<MeshFilter>().mesh;
-
     }
 
     void Update() {
