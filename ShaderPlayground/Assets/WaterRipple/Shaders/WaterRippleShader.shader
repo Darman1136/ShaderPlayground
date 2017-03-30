@@ -33,6 +33,7 @@ Shader "Custom/WaterRippleShader" {
 			uniform half4 _Offset[8];
 			uniform float _DrawDistance[8];
 			uniform half4 _Impact[8];
+			uniform float _Timer;
 
 			half _Glossiness;
 			half _Metallic;
@@ -44,7 +45,7 @@ Shader "Custom/WaterRippleShader" {
 				float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
 
 				for (int i = 0; i < 8; i++) {
-					half value = _Scale * sin(_Time.w * _Speed * _Frequency + ripple + ((v.vertex.x * _Offset[i].x) + (v.vertex.z * _Offset[i].z)));
+					half value = _Scale * sin(_Timer * _Speed * _Frequency + ripple + ((v.vertex.x * _Offset[i].x) + (v.vertex.z * _Offset[i].z)));
 					if (distance(v.vertex, _Impact[i]) < _DrawDistance[i]) {
 						o.normalValue += (value  * _WaveAmplitude[i]);
 						v.vertex.y += (value * _WaveAmplitude[i]);
